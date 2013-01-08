@@ -6,7 +6,9 @@ A gem built from the original 37 Signals fast_remote_cache rails plugin. Think o
 
 Add this line to your application's Gemfile:
 
-    gem "capistrano-fast_remote_cache"
+```ruby
+gem "capistrano-fast_remote_cache"
+```
 
 And then execute:
 
@@ -20,17 +22,23 @@ Or install it yourself as:
 
 In your deploy.rb or Capfile:
 
-    require "capistrano/fast_remote_cache"
+```ruby
+require "capistrano/fast_remote_cache"
+```
 
 Set the Capistrano deployment strategy in the same file with:
 
-    set :deploy_via, :fast_remote_cache
+```ruby
+set :deploy_via, :fast_remote_cache
+```
 
-_Note the stragey name!_
+_Note the strategy name!_
 
 To exclude certain directories or files from being deployed, set the copy_exclude variable (can also include glob patterns):
 
-    set :copy_exclude, %w(test .git doc config/database.yml)
+```ruby
+set :copy_exclude, %w(test .git doc config/database.yml)
+```
 
 ## Contributing
 
@@ -61,8 +69,8 @@ Furthermore, it assumes that you have Ruby (1.8.6, preferably) installed on the 
 For the fastest possible deploys:
 
 * Always deploy as the same user. If you're part of a team where everyone can (and does) deploy, create a new user (e.g., "deploy") and set it up so that your team can all log in as this user. Make sure this user also has read access to your source code repository.
-* Avoid sudo if at all possible. set(:use_sudo, false), and then make sure that the deploy user has sufficient permissions to start and stop the mongrels, write to the necessary directories, etc.
-* Disable the "group_writable" setting: set(:group_writable, false). This is only necessary when you have multiple users deploying.
+* Avoid sudo if at all possible. `set(:use_sudo, false)`, and then make sure that the deploy user has sufficient permissions to start and stop the mongrels, write to the necessary directories, etc.
+* Disable the "group_writable" setting: `set(:group_writable, false)`. This is only necessary when you have multiple users deploying.
 * Don't include Rails (or other large libraries) in your application. Yes, it is convenient to include them, but they bloat your app and make checkouts and copies much slower. You have to balance convenience in development versus speed of deployment. Find a compromise that works for you.
 
 ### License
